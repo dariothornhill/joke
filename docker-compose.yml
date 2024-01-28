@@ -1,0 +1,15 @@
+version: '3'
+services:
+  joker-app:
+    ports:
+      - "3010:3010"  # Map container port 5000 to host port 5000 (adjust if needed)
+    image: 95.217.9.183:5000/joker  # Specify the target image with the correct tag
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == worker]  # Deploy on worker nodes in a Swarm if applicable
+    networks:
+      - mynetwork  # Optionally, specify a custom network for communication
+
+networks:
+  mynetwork:
